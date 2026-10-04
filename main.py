@@ -480,25 +480,42 @@ class Library:
                 active_borrow_records.append(record)
         return active_borrow_records
 
-# library = Library()
-#
-# book1 = Book("9780306406157", "Avatar", "James Griffin", 2010)
-# book2 = Book("0306406152", "Solo Leveling", "Kyoto Osuma", 2016)
-#
-# member1 = Member("Chidera Valentine", 20, "ugwuchidera@gmail.com", "MID-002")
-# member2 = Member("Daniel Creed", 19, "danielcreed@outlook.com", "MID-004")
-#
-# librarian = Librarian("James Jackson", 36, "jacksonjames@yahoo.com", "LID-001")
-#
-# library.add_book(book1)
-# library.add_book(book2)
-# library.add_member(member1)
-# library.add_member(member2)
-# library.add_librarian(librarian)
-#
-# library.borrow_book("MID-002", "9780306406157")
-# library.borrow_book("MID-004", "0306406152")
-#
+    # Testing the GitHub Work flow
+    def search_books_by_title(self, title):
+        books_title = []
+        if isinstance(title, str):
+            for book in self._books:
+                if title.lower() in book.title.lower():
+                    books_title.append(book)
+            return books_title
+        raise TypeError("Book title must be a string")
+
+
+library = Library()
+
+book1 = Book("9780306406157", "Avatar Level", "James Griffin", 2010)
+book2 = Book("0306406152", "Solo Leveling", "Kyoto Osuma", 2016)
+
+
+member1 = Member("Chidera Valentine", 20, "ugwuchidera@gmail.com", "MID-002")
+member2 = Member("Daniel Creed", 19, "danielcreed@outlook.com", "MID-004")
+
+librarian = Librarian("James Jackson", 36, "jacksonjames@yahoo.com", "LID-001")
+
+library.add_book(book1)
+library.add_book(book2)
+library.add_member(member1)
+library.add_member(member2)
+library.add_librarian(librarian)
+
+library.borrow_book("MID-002", "9780306406157")
+library.borrow_book("MID-004", "0306406152")
+
+print(library.search_books_by_title("solo"))
+print(library.search_books_by_title("level"))
+print(library.search_books_by_title("sonic"))
+print(library.search_books_by_title("SOLO"))
+print(library.search_books_by_title(123))
 # print(book1.availability)
 # print(book2.availability)
 #
